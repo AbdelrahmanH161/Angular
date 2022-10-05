@@ -27,10 +27,105 @@
             <a class="nav-link disabled">Disabled</a>
           </li>
         </ul>
+        <div class="">
+          <button class="btn btn-outline-primary me-2"
+              data-bs-toggle="modal" data-bs-target="#sign_in">sign in</button>
+          <button class="btn btn-outline-primary me-2 "
+              data-bs-toggle="modal" data-bs-target="#sign_up"> sign up</button>
+      </div>
         <form class="d-flex" role="search">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
+          <button class="btn btn-outline-primary" type="submit">Search</button>
         </form>
+        <div>
+          <div class="modal fade bg-black bg-opacity-75" id="sign_up" tabindex="-1" aria-labelledby="exampleModalLabel"
+              aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                      <div class="modal-header bg-primary">
+                          <h5 class="modal-title text-light">Sign Up</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body p-5">
+                          <form action="" [formGroup]="userform" (ngSubmit)="adduser()">
+                              <div class="mb-3">
+                                  <label for="user_name" class="form-label">User Name</label>
+                                  <input type="text" class="form-control" formControlName="username"  placeholder="Enter user name">
+                                  <div  *ngIf="userform.get('username')?.touched && userform.get('username')?.invalid">
+                                    <span class="text-danger" *ngIf="userform.get('username')?.errors?.['required']">must enter a name</span>
+                                    <span class="text-danger" *ngIf="userform.get('username')?.errors?.['minlength']">must enter a name with al least 4 character</span>
+                                  </div>
+                              </div>
+                              <div class="mb-3">
+                                  <label for="email" class="form-label">Email</label>
+                                  <input type="email" class="form-control"  placeholder="E-mail" formControlName="email">
+                                  <div  *ngIf="userform.get('email')?.touched && userform.get('email')?.invalid">
+                                    <span class="text-danger" *ngIf="userform.get('email')?.errors?.['required']">must enter a Email</span>
+                                    <span class="text-danger" *ngIf="userform.get('email')?.errors?.['email']">must enter a valid Email </span>
+                                  </div>
+                              </div>
+                              <div class="mb-3">
+                                  <label for="tel" class="form-label">Phone Number</label>
+                                  <input type="tel" class="form-control" id="tel" placeholder="Phone Number" formControlName="phone">
+                                  <div  *ngIf="userform.get('phone')?.touched && userform.get('phone')?.invalid">
+                                    <span class="text-danger" *ngIf="userform.get('phone')?.errors?.['required']">must enter a Phone</span>
+                                    <span class="text-danger" *ngIf="userform.get('phone')?.errors?.['minlength']">must enter a name with al least 11 Number </span>
+                                  </div>
+                              </div>
+                              <div class="mb-3">
+                                  <label for="Password_1" class="form-label">Password</label>
+                                  <input type="text" class="form-control" id="Password_1" placeholder="Password" formControlName="password">
+                                  <div  *ngIf="userform.get('password')?.touched && userform.get('password')?.invalid">
+                                    <span class="text-danger" *ngIf="userform.get('password')?.errors?.['required']">must enter a password</span>
+                                  </div>
+                              </div>
+                              <div class="mb-3">
+                                  <label for="Password_2" class="form-label">Confirm password</label>
+                                  <input type="text" class="form-control" id="Password_2"
+                                      placeholder="confirm password" formControlName="cpassword">
+                                      <div  *ngIf=" userform.value['password']!==userform.value['cpassword']">
+                                        <span class="text-danger" >must enter a password</span>
+                                      </div>
+                              </div>
+                              <button type="submit" class="btn btn-primary form-control" [disabled]="userform.invalid || (userform.value['password']!==userform.value['cpassword'])" >Sign Up</button>
+                              <div class="form-text">Already has an account? <a class="text-primary"
+                                      data-bs-toggle="modal" data-bs-target="#sign_in" style="cursor: pointer;">Sign In</a>
+                              </div>
+                          </form>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="modal fade bg-black bg-opacity-75" id="sign_in" tabindex="-1" aria-labelledby="exampleModalLabel"
+              aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                      <div class="modal-header bg-primary">
+                          <h5 class="modal-title text-light">Sign In</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body p-5">
+                          <form action="http://localhost:4000/login" method="post">
+                              <div class="mb-3">
+                                  <label for="user_name" class="form-label">Email address</label>
+                                  <input type="text" class="form-control" id="email_sign_in" aria-describedby="emailHelp"
+                                      placeholder="Enter user name or email" name="email">
+                              </div>
+                              <div class="mb-3">
+                                  <label for="Password_sign_in" class="form-label">Password</label>
+                                  <input type="password" class="form-control" id="Password_sign_in"
+                                      placeholder="Password" name="password">
+                              </div>
+                              <button type="submit" class="btn btn-primary form-control">Sign In</button>
+                              <div id="emailHelp" class="form-text">Don't have an account? <a class="text-primary"
+                                      data-bs-toggle="modal" data-bs-target="#sign_up" style="cursor: pointer;">Sign
+                                      Up</a></div>
+                          </form>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
       </div>
     </div>
-  </nav>
+</nav>
