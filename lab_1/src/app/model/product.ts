@@ -4,6 +4,7 @@ export class proudact{
     quantity:number=1;
     price:number=1;
     img:string="";
+    categoryId:number=1;
 }
 // i)	ID – of type number.
 // ii)	Name – of type string

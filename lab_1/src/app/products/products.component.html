@@ -1,5 +1,5 @@
 <div class="row row-cols-4 ">
-    <div class="col" *ngFor="let item of prodct;">
+    <div class="col mt-3" *ngFor="let item of product;">
         <div class="card" style="width: 18rem;">
             <img src="{{item.img}}" class="card-img-top" alt="..." height="200px">
             <div class="card-body">
@@ -7,6 +7,7 @@
                 <p class="card-text">price {{item.price}}$</p>
                 <p class="card-text">quantity {{item.quantity}}</p>
                 <a href="#" class="btn btn-primary">buy now</a>
+                <button href="#" class="btn btn-warning ms-5">+ add to cart</button>
             </div>
         </div>
     </div>

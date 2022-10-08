@@ -1,0 +1,12 @@
+<div class="container mt-4">
+    <h2>category</h2>
+
+    <div class="container">
+        <select class="form-select" aria-label="Disabled select example" [(ngModel)]="Select" >
+            <option *ngFor="let item of category;" [value]="item.id"  [selected]="item.id == Select" >{{item.name}}</option>
+        </select>
+    </div>
+    <hr>
+    <h2> item </h2>
+    <app-cartchiled [selectcat]="Select"></app-cartchiled>
+</div>
