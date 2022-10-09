@@ -1,0 +1,23 @@
+<div class="container mt-5">
+    <table class="table table-primary">
+        <thead>
+          <tr>
+            <th scope="col">#ID</th>
+            <th scope="col">Title</th>
+            <th scope="col">IsDone</th>
+            <th scope="col">CreatedDate</th>
+            <th>button</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of todo">
+            <th>{{item.ID}}</th>
+            <td>{{item.Title}}</td>
+            <td>{{item.IsDone}}</td>
+            <td>{{item.CreatedDate | date}}</td>
+            <td ><button class=" btn btn-danger me-3" (click)="Delete(item.ID)">delete</button> <button class="btn btn-warning">Update</button></td>
+          </tr>
+        </tbody>
+      </table>
+</div>
+

@@ -1,0 +1,11 @@
+<div class="container text-center m-5 w-100">
+    <form class="row g-3"  [formGroup]="addtask" (ngSubmit)="add()">
+        <div class="col">
+            <label for="" class="">Task</label>
+            <input type="text" class="form-control" formControlName="Title" placeholder="Enter Task">
+        </div>
+        <div class="col-auto">
+            <button type="submit" class="btn btn-primary mb-3" >Add Task</button>
+        </div>
+    </form>
+</div>
