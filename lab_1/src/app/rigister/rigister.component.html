@@ -1,0 +1,31 @@
+<div class="container">
+    <form action="" [formGroup]="userform" (ngSubmit)="adduser()">
+        <div class="mb-3">
+            <label for="user_name" class="form-label">Name</label>
+            <input type="text" class="form-control" formControlName="Name"  placeholder="Enter user name">
+            <!-- <div  *ngIf="userform.get('username')?.touched && userform.get('username')?.invalid">
+              <span class="text-danger" *ngIf="userform.get('username')?.errors?.['required']">must enter a name</span>
+              <span class="text-danger" *ngIf="userform.get('username')?.errors?.['minlength']">must enter a name with al least 4 character</span>
+            </div> -->
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">UserName</label>
+            <input type="text" class="form-control"  placeholder="E-mail" formControlName="UserName">
+            <!-- <div  *ngIf="userform.get('email')?.touched && userform.get('email')?.invalid">
+              <span class="text-danger" *ngIf="userform.get('email')?.errors?.['required']">must enter a Email</span>
+              <span class="text-danger" *ngIf="userform.get('email')?.errors?.['email']">must enter a valid Email </span>
+            </div> -->
+        </div>
+        <div class="mb-3">
+            <label for="Password_1" class="form-label">Password</label>
+            <input type="text" class="form-control" id="Password_1" placeholder="Password" formControlName="Password">
+            <!-- <div  *ngIf="userform.get('password')?.touched && userform.get('password')?.invalid">
+              <span class="text-danger" *ngIf="userform.get('password')?.errors?.['required']">must enter a password</span>
+            </div> -->
+        </div>
+        <button type="submit" class="btn btn-primary form-control" >Sign Up</button>
+        <div class="form-text">Already has an account? <a class="text-primary"
+                routerLink="/login">Sign In</a>
+        </div>
+    </form>
+</div>

@@ -1,10 +1,10 @@
-export class proudact{
-    id:number=1;
-    name:string="";
-    quantity:number=1;
-    price:number=1;
-    img:string="";
-    categoryId:number=1;
+export interface proudact{
+    id:number;
+    title:string;
+    description:number;
+    price:number;
+    image:string;
+    category:string;
 }
 // i)	ID – of type number.
 // ii)	Name – of type string

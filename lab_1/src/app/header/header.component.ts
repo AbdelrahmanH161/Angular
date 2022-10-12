@@ -1,39 +1,38 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { user } from '../model/users';
+import { Route, Router } from '@angular/router';
+import { UserRegister ,UserLogin } from '../model/user';
+import { AuthService } from '../service/Auth.service';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit {
-users:user[]=[]
-  userform!: FormGroup;
-  constructor() { 
-    this.userform = new FormGroup(
-      {
-        username: new FormControl("", [Validators.required, Validators.minLength(5)]),
-        email: new FormControl("", [Validators.required, Validators.email]),
-        password: new FormControl("", [Validators.required]),
-        cpassword: new FormControl("", [Validators.required]),
-        phone: new FormControl("", [Validators.required,Validators.minLength(11)]),
-      })
+export class HeaderComponent implements OnInit , OnChanges{
+// users:UserRegister
+isloged:boolean;
+  constructor(private auth:AuthService ,private router:Router ) { 
+    this.isloged = this.auth.isLogged()
   }
-  con:number =0;
-  adduser(){
-    let us:user={
-      id:this.con,
-      username:this.userform.value['username'],
-      password:this.userform.value['password'],
-      cpassword:this.userform.value['username'],
-      email:this.userform.value['email'],
-      phone:this.userform.value['phone'],
-    }
-    this.users.push(us);
-    console.log(this.users);
-  }
-  ngOnInit(): void {
+  ngOnChanges(changes: SimpleChanges): void {
+
   }
 
+
+  ngOnInit(): void {
+    this.auth.getLoggedStatus().subscribe((res)=>{
+      this.isloged = res
+    })
+  }
+
+  logout(){
+    this.auth.logout().subscribe((res)=>{
+      if(res.Data){
+        this.auth.removeToken()
+        this.auth.setLoggedStatus(false);
+      }else
+      console.log("erorr")
+    })
+  }
 }

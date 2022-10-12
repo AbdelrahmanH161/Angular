@@ -3,6 +3,8 @@ import { proudact } from '../model/product';
 import { category } from '../model/category';
 import { ProductService } from '../service/product.service';
 import {CategoryService} from '../service/category.service'
+import { ActivatedRoute } from '@angular/router';
+import { CartService } from '../service/cart.service';
 @Component({
   selector: 'app-cartchiled',
   templateUrl: './cartchiled.component.html',
@@ -11,20 +13,23 @@ import {CategoryService} from '../service/category.service'
 
 
 export class CartchiledComponent implements OnInit ,OnChanges{
-  // product:proudact[]
-  FilterList:proudact[]
-  @Input() selectcat:number=0;
-  constructor(private ProductService:ProductService) {
-    // this.product = this.ProductService.getAll()
-    this.FilterList = ProductService.getAll()
+  prod!:proudact
+  cartlist! : proudact[]
+  constructor(private pro :ProductService ,private cart :CartService) {
+
   }
+    
+  
   
   ngOnChanges(changes: SimpleChanges): void {
-    this.FilterList = this.ProductService.filtterByCategoryId(this.selectcat)
-    console.log(this.selectcat)
+    this.cartlist= this.cart.getcart()!
   }
   ngOnInit(): void {
+    this.cart.getcart()
+   this.cartlist= this.cart.listofcart!
+   console.log(this.cart.listofcart)
+  //  console.log(this.cart.getcart())
+  //  console.log(this.prod)
+  //  this.cartlist.push(this.prod)
   }
-  
 }
-

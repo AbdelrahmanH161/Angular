@@ -1,0 +1,16 @@
+<div class="container mt-5">
+    <form action="" method=""  [formGroup]="loginform" (ngSubmit)="login()">
+        <div class="mb-3">
+            <label for="user_name" class="form-label">user name</label>
+            <input type="text" class="form-control" id="" aria-describedby="emailHelp"
+                placeholder="Enter user name" name="" formControlName="UserName">
+        </div>
+        <div class="mb-3">
+            <label for="Password_sign_in" class="form-label">Password</label>
+            <input type="password" class="form-control" 
+                placeholder="Password" name="" formControlName="Password">
+        </div>
+        <button type="submit" class="btn btn-primary form-control" >Sign In</button>
+        <div id="emailHelp" class="form-text">Don't have an account? <a class="text-primary" style="cursor: pointer;" routerLink="/signUp">SignUp</a></div>
+    </form>
+</div>

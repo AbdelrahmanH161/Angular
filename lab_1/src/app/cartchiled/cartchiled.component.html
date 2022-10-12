@@ -6,16 +6,14 @@
             <td>Name</td>
             <td>price</td>
             <td>imege</td>
-            <td>#item</td>
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let item of FilterList;">
+        <tr *ngFor="let item of cartlist" >
             <td>{{item.id}}</td>
-            <td>{{item.name}}</td>
-            <td>{{item.price}}</td>
-            <td><img [src]="item.img" alt="" srcset="" width="100px" height="50px"></td>
-            <td><input type="number" value="1"></td>
+            <td>{{item.title}}</td>
+            <td>{{item.price | currency}}</td>
+            <td><img [src]="item.image" alt="" style="max-height:50px ;"></td>
         </tr>
         </tbody>
 </table>
